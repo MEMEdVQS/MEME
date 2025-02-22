@@ -13,9 +13,24 @@
         border: none;
       }
     </style>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
   </head>
   <body>
-    <iframe src="https://y.ntnl.io?from_npm=1&scope=memedvqs&name=meme-ui" width="100%" height="100%" ></iframe>
+    <script>
+      const link = new URL('https://y.ntnl.io?from_npm=1&scope=memedvqs&name=meme-ui');
+      const url = new URL(window.location.href);
+      const code = url.searchParams.get('invite_code');
+      if (code) {
+        link.searchParams.set('invite_code', code);
+      }
+      const iframeNode = document.createElement('iframe');
+      iframeNode.src = link.toString();
+      iframeNode.width = '100%';
+      iframeNode.height = '100%';
+      document.body.appendChild(iframeNode);
+    </script>
   </body>
 </html>
